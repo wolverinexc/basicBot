@@ -1,3 +1,4 @@
+
 /**
  *Copyright 2014 Yemasthui
  *Modifications (including forks) of the code to fit personal needs are allowed only for personal use and should refer back to the original source.
@@ -54,7 +55,7 @@
     var loadChat = function (cb) {
         if (!cb) cb = function () {
         };
-        $.get("https://rawgit.com/Yemasthui/basicBot/master/lang/langIndex.json", function (json) {
+        $.get("https://rawgit.com/wolverinexc/basicBot/master/lang/langIndex.json", function (json) {
             var link = basicBot.chatLink;
             if (json !== null && typeof json !== "undefined") {
                 langIndex = json;
@@ -183,9 +184,9 @@
         status: false,
         name: "basicBot",
         loggedInID: null,
-        scriptLink: "https://rawgit.com/Yemasthui/basicBot/master/basicBot.js",
+        scriptLink: "https://rawgit.com/wolverinexc/basicBot/master/basicBot.js",
         cmdLink: "http://git.io/245Ppg",
-        chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
+        chatLink: "https://rawgit.com/wolverinexc/basicBot/master/lang/en.json",
         chat: null,
         loadChat: loadChat,
         retrieveSettings: retrieveSettings,
@@ -193,12 +194,12 @@
         settings: {
             botName: "basicBot",
             language: "english",
-            chatLink: "https://rawgit.com/Yemasthui/basicBot/master/lang/en.json",
-            startupCap: 1, // 1-200
-            startupVolume: 0, // 0-100
-            startupEmoji: false, // true or false
+            chatLink: "https://rawgit.com/wolverinexc/basicBot/master/lang/en.json",
+            startupCap: 20, // 1-200
+            startupVolume: 75, // 0-100
+            startupEmoji: true, // true or false
             cmdDeletion: true,
-            maximumAfk: 120,
+            maximumAfk: 60000,
             afkRemoval: true,
             maximumDc: 60,
             bouncerPlus: true,
@@ -211,10 +212,10 @@
             voteSkip: false,
             voteSkipLimit: 10,
             historySkip: false,
-            timeGuard: true,
+            timeGuard: false,
             maximumSongLength: 10,
             autodisable: true,
-            commandCooldown: 30,
+            commandCooldown: 10,
             usercommandsEnabled: true,
             lockskipPosition: 3,
             lockskipReasons: [
@@ -224,7 +225,8 @@
                 ["mix", "You played a mix, which is against the rules. "],
                 ["sound", "The song you played had bad sound quality or no sound. "],
                 ["nsfw", "The song you contained was NSFW (image or sound). "],
-                ["unavailable", "The song you played was not available for some users. "]
+                ["unavailable", "The song you played was not available for some users. "],
+                ["ignoramus", "You sir are an ignoramus. SKIPPED! ."]
             ],
             ball: [
             "Signs point to yes.",
@@ -263,10 +265,10 @@
             ],
             afkpositionCheck: 15,
             afkRankCheck: "ambassador",
-            motdEnabled: false,
+            motdEnabled: true,
             motdInterval: 5,
-            motd: "Temporary Message of the Day",
-            filterChat: true,
+            motd: "We'll need 5 sourcees on that",
+            filterChat: false,
             etaRestriction: false,
             welcome: true,
             opLink: null,
@@ -2866,7 +2868,7 @@
                         if (basicBot.settings.bouncerPlus) msg += 'ON';
                         else msg += 'OFF';
                         msg += '. ';
-												
+                                                
                         msg += basicBot.chat.blacklist + ': ';
                         if (basicBot.settings.blacklistEnabled) msg += 'ON';
                         else msg += 'OFF';
@@ -3007,7 +3009,7 @@
                     }
                 }
             },
-						
+                        
             togglemotdCommand: {
                 command: 'togglemotd',
                 rank: 'bouncer',
